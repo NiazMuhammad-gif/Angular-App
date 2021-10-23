@@ -4,8 +4,8 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" style="margin-right: 5px;" type="submit">Save</button>
-          <button class="btn btn-danger" type="button">Cancel</button>
+          <button class="btn btn-success" [disabled]="!recipeForm.valid" style="margin-right: 5px;" type="submit">Save</button>
+          <button class="btn btn-danger" (click)="onCancel()" type="button">Cancel</button>
         </div>
       </div>
       <div class="row">
@@ -30,13 +30,14 @@
               id="imagePath"
               class="form-control"
               formControlName="imagePath"
+              #imagePath
             >
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" alt="" class="image-responsive">
+          <img [src]="imagePath.value" alt="" class="image-responsive">
         </div>
       </div>
       <div class="row">
